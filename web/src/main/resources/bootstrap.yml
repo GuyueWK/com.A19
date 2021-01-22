@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: false
+    config:
+      discovery:
+        # 开启配置中心服务发现支持
+        enabled: true
+        # 配置中心服务的id
+        service-id: config-service123
+      # 那个文件夹，config模块resources/config下的那个文件夹
+      label: dev
+      # 读取后缀名称
+      profile: dev
+      # 配置文件名称
+      name: config
+      # fail-fast 如果访问配置中心失败，则停止启动服务
+      fail-fast: true
+      # retry 访问配置中心失败时的重试策略
+      retry:
+        initial-interval: 2000
+        # 最多重试次数
+        max-attempts: 6
+        # 最大重试间隔
+        max-interval: 4000
+        # 每次重试时间是之前的倍数
+        multiplier: 1.2
