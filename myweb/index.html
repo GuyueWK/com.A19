@@ -1,0 +1,218 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+    <link rel="stylesheet" href="css/index.css"/>
+    <link rel="stylesheet" href="css/foot.css"/>
+    <link rel="stylesheet" href="css/head.css"/>
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="css/swiper-bundle.min.css">
+    <!-- Demo styles -->
+    <link rel="stylesheet" href="css/index_banner.css">
+    <meta name="keywords" content="共享租赁网上商城">
+    <meta name="description" content="中信共享，租赁，网上商城">
+    <title>共享租赁商城_智能化共享租赁</title>
+    <noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+<!--    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>-->
+    <link rel="icon" type="image/x-icon" href="img/head/zxfavicon.png" />
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        // window.onload = function () {
+        //     let userId = "";
+        //     let _ticket = $.cookie("EM_TICKET");
+        //     let userPassword = $.cookie("PASSWORD");
+        //     let userName = $.cookie("USERNAME");
+        //     if (!_ticket) {
+        //         // 如果没有ticket，说明无法获得登录状态，尝试用cookie的密码自动登录
+        //         if (!userPassword || !userName)
+        //             // 二者缺一无法自动登录
+        //             return;
+        //         else{
+        //             autoLogin(userName, userPassword);
+        //             return;
+        //         }
+        //     }
+        //     //当dataType类型为jsonp时，jQuery就会自动在请求链接上增加一个callback的参数
+        //     $.ajax({
+        //         url: "http://www.honest_a19.com/user/query/" + _ticket,
+        //         dataType: "json",
+        //         type: "GET",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 // 在redis中找到了用户
+        //                 let _data = JSON.parse(data.data);//jackson
+        //                 let html = _data.userName +
+        //                     "，欢迎来到honest_a19！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //             }else if (data.status === 201){
+        //                 // 在redis中没找到用户
+        //                 delCookie("EM_TICKET");
+        //                 delCookie("USERNAME");
+        //                 delCookie("PASSWORD");
+        //             }else if (data.status === 500){
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert('请求失败');
+        //         }
+        //     });
+        // }
+        //
+        // /**
+        //  * 自动登录
+        //  * @param userName 用户名
+        //  * @param userPassword 密码
+        //  */
+        // function autoLogin(userName, userPassword) {
+        //     $.ajax({
+        //         url:"http://www.honest_a19.com/user/autologin",
+        //         type:"get",
+        //         data:{
+        //             "userName": userName,
+        //             "userPassword": userPassword
+        //         },
+        //         dataType:"json",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 let _data = data.data;//jackson
+        //                 let html = _data.userName +
+        //                     "，欢迎来到共享租赁平台！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //             }else if (data.status === 500){
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert('请求失败');
+        //         }
+        //     });
+        // }
+        //
+        // function search(a) {
+        //     let query = document.getElementById(a).value;
+        //     window.location.href = "./search.html?query=" + query;
+        // }
+    </script>
+</head>
+
+<body>
+<div id="common_head">
+    <div class="line1">
+        <div class="content">
+            <ul>
+                <li class="fore1" id="loginbar" v-html="personalMsg">
+                    <span id="head_span" ><a href="login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="regist.html">注册</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="line2">
+        <a href="http://www.citicbank.com/"><img id="logo" src="img/head/zxlogo.png" alt="logo"/></a>
+        <input type="text" v-model="query">
+        <input type="button" value="搜 索" @click="search">
+        <span id="goto">
+			<a id="goto_order" href="./myorder.html">我的订单</a>
+			<a id="goto_favourites" href="./myfavorites.html">我的收藏</a>
+		</span>
+       <span id="anologin">
+           <a id="goto_login" :href="gotoHref">{{loginTit}}</a>
+       </span>
+    </div>
+    <div class="line3">
+        <div class="content">
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./product-list.html?type=电子数码">电子数码</a></li>
+                <li><a href="./product-list.html?type=运动户外">运动户外</a></li>
+                <li><a href="./product-list.html?type=母婴玩具">母婴玩具</a></li>
+                <li><a href="./product-list.html?type=服装道具">服装道具</a></li>
+                <li><a href="./product-list.html?type=影像出版">影像出版</a></li>
+                <li><a href="./product-list.html?type=家居家用">家居家用</a></li>
+                <li><a href="./product-list.html?type=共享生活">共享生活</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<br>
+<div class="swiper-container" id="swiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide" v-for="item in bannerArr" @click="gotoProduct(item.productId)"><img :src="item.url"></div>
+    </div>
+    <!-- Add Pagination -->
+    <div class="swiper-pagination"></div>
+    <!-- Add Arrows -->
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+<br><br>
+<div id="index">
+    <div class="type-container">
+        <!--分类推荐-->
+        <div class="type_1" @click="gotoType('电子数码')">电子数码</div>
+        <div class="type_2" @click="gotoType('运动户外')">运动户外</div>
+        <div class="type_1" @click="gotoType('母婴玩具')">母婴玩具</div>
+        <div class="type_2" @click="gotoType('服装道具')">服装道具</div>
+        <div class="type_1" @click="gotoType('影像出版')">影像出版</div>
+        <div class="type_2" @click="gotoType('家居家用')">家居家用</div>
+    </div>
+    <div class="per-container">
+        <!--分类推荐-->
+    </div>
+<!--    <div id="line6">-->
+<!--        <div id="line6_1">-->
+<!--            <div id="l61text_1">优享生活</div>-->
+<!--            <div id="l61text_2">Enjoy <u>life</u></div><br>-->
+<!--            <a href="javascript:void(0)">空气净化加湿器</a>-->
+<!--            <a href="javascript:void(0)">IPhone手机</a>-->
+<!--            <a href="javascript:void(0)">PS4 Pro 游戏机</a>-->
+<!--        </div>-->
+<!--        <div id="line6_2">-->
+<!--            <div><a href="javascript:void(0)"><img src="./img/index/yx1.png"></a></div>-->
+<!--            <div><a href="javascript:void(0)"><img src="./img/index/yx2.png"></a></div>-->
+<!--            <div><a href="javascript:void(0)"><img src="./img/index/yx3.png"></a></div>-->
+<!--        </div>-->
+<!--    </div>-->
+    <br>
+    <div id="bottom-tit">
+        <span id="bottom-tit_1">
+            <img src="img/index/icon_g1.png" alt="icon_g1"/>&nbsp;&nbsp;中信银行&nbsp品质保证
+        </span>
+        <span id="bottom-tit_2">
+                <img src="img/index/icon_g2.png" alt="icon_g2"/>&nbsp;&nbsp;7天申诉保障
+            </span>
+        <span id="bottom-tit_3">
+                <img src="img/index/icon_g3.png" alt="icon_g3"/>&nbsp;&nbsp;100元起免运费
+        </span>
+    </div>
+</div>
+<div class="fixed">
+<!--    <a href="https://github.com/GuyueWK/com.A19" target="_blank">-->
+<!--        <img src="./img/head/mywxqr.png" width="100" alt="qrcode"/>-->
+<!--    </a>-->
+    <a href="#common_head" class="toTop"></a>
+</div>
+<div id="common_foot">
+    <p>
+        老实人团队版权所有 Copyright © 2020-2021
+        <br />
+        null公网安备  null号
+    </p>
+</div>
+
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<!-- Swiper JS -->
+<script src="js/swiper-bundle.min.js"></script>
+<!-- Initialize Swiper -->
+<script src="js/index_banner.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/header.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+#container{
+    padding-bottom: 20px;
+}
+#content{
+    width: 1000px;
+    height: auto;
+}
+.checkout-tit{
+    /*float: left;*/
+    font-size: 20px;
+    line-height: 40px;
+}
+.checkout-steps{
+    border: 1px solid #f0f0f0;
+    padding: 0 20px;
+}
+.hr{
+    margin-top: 18px;
+    border: 1px solid #f0f0f0;
+}
+.delNum ,.addNum{
+    border: 1px solid #CCCCCC;
+    color:#999999;
+    padding:2px 7px;
+    text-decoration:none;
+    vertical-align: middle;
+}
+#shopping-list{
+    line-height: 30px;
+    height: 260px;
+}
+#shopping-list input{
+    border: 1px solid #CCCCCC;
+    width:40px;
+    height:24px;
+    line-height:20px;
+    text-align: center;
+    vertical-align: middle;
+}
+#left_info{
+    float: left;
+}
+#right_info{
+    margin-left: 80px;
+    float: left;
+}
+#trade_foot{
+    padding: 15px 10px 15px 0;
+    line-height: 20px;
+    text-align: right;
+    border-top: 1px solid #e6e6e6;
+    width: 980px;
+    color: #999;
+    background-color: #f4f4f4;
+}
+#price-tit{
+    margin-right: 20px;
+}
+#total_price{
+    margin-right: 20px;
+    color: #e81d2a;
+    font-size: 20px;
+}
+.submit{
+    float: right;
+    width:189px;
+    height:42px;
+    border-style:none;
+    margin: 10px;
+    border-radius: 5px;
+    background-color: #C41228;
+    color: white;
+    font-family: "微软雅黑", serif;
+    cursor: pointer;
+}
+.submit:hover{
+    background-color: #D01E34;
+}

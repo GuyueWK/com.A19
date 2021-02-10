@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <annotationProcessing>
-      <profile name="Maven default annotation processors profile" enabled="true">
-        <sourceOutputDir name="target/generated-sources/annotations" />
-        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
-        <outputRelativeToContentRoot value="true" />
-        <module name="server" />
-        <module name="zuul" />
-        <module name="web" />
-        <module name="config" />
-        <module name="eureka" />
-      </profile>
-    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ajax-bmi" target="1.8" />
+      <module name="com.A19" target="1.8" />
+      <module name="common" target="1.8" />
+      <module name="config" target="1.8" />
+      <module name="eureka" target="1.8" />
+      <module name="server" target="1.8" />
+      <module name="web" target="1.8" />
+      <module name="zuul" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
