@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="img/head/zxfavicon.png" />
+    <link rel="stylesheet" href="css/login.css">
+    <meta name="keywords" content="共享租赁网上商城">
+    <meta name="description" content="中信共享，租赁，网上商城">
+    <title>欢迎登录网上商城</title>
+    <noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+</head>
+<body>
+<img src="./img/head/zxlogo.png" alt="logo" style="position: absolute;top: 8%;left: 12%;">
+<h1>欢迎登陆共享租赁商城</h1>
+<!--<form id="login-warp">-->
+    <table id="login-warp">
+        <tr>
+            <td colspan="2" style="color: #d70010;text-align: center;" class="tdx" id="alert"></td>
+        </tr>
+        <tr>
+            <td class="tdx"><label for="username">用户名：</label></td>
+            <td>
+                <input type="text" id="username" name="username" placeholder="请输入账号" v-model="userId">
+<!--                <span style="color:#d70010" v-text="checkId"></span>-->
+            </td>
+        </tr>
+        <tr>
+            <td class="tdx"><label for="password">密&nbsp;&nbsp;&nbsp;码：</label></td>
+            <td>
+                <input type="password" name="password" id="password" placeholder="请输入密码" v-model="password" @keyup.enter="login">
+<!--                <span style="color:red" v-text="checkPassword"></span>-->
+            </td>
+        </tr>
+<!--        <tr>-->
+<!--            <td class="tdx"><label for="valistr">验证码：</label></td>-->
+<!--            <td>-->
+<!--                <input type="text" name="valistr" id="valistr"/>-->
+<!--                <img src="" width="" height="" alt="验证码" onclick="refreshValistr(this)"/>-->
+<!--                <span style="color:red"></span>-->
+<!--            </td>-->
+<!--        </tr>-->
+        <tr>
+            <td colspan="2" style="text-align: center;">
+<!--                <input type="checkbox" name="remname" value="true" checked="checked" id="remname"/><label for="remname">记住用户名</label>-->
+<!--                <input type="checkbox" name="autologin" value="true" id="autologin"/><label for="autologin">7天内自动登陆</label>-->
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" style="text-align: center;">
+                <input type="submit" value="登陆" @click="login">
+            </td>
+        </tr>
+    </table>
+<!--</form>-->
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script type="text/javascript" src="js/cookie.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

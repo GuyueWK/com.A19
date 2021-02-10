@@ -1,0 +1,405 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>新订单</title>
+<!--    <link href="css/cart.css" rel="stylesheet" type="text/css">-->
+    <link rel="stylesheet" href="css/foot.css"/>
+    <link rel="stylesheet" href="css/head.css"/>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8"/>
+    <noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+    <link href="css/prodList.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/neworder.css">
+    <link rel="icon" type="image/x-icon" href="img/head/zxfavicon.png"/>
+<!--    <script type="text/javascript" src="js/logout.js"></script>-->
+    <meta charset="UTF-8">
+    <script type="text/javascript">
+        // /**
+        //  * 文档就绪事件
+        //  */
+        // $(function () {
+        //     // productId=null//上一个页面的值;
+        //     // num = null;//上一个页面的值
+        //     //
+        //     // $.ajax({
+        //     //     url: "http://www.honest_a19.com/products/item/" + productId,
+        //     //     dataType: "json",
+        //     //     type: "POST",
+        //     //     success: function (data) {
+        //     //         //图片
+        //     //         let imgUrl = data.productImgurl;
+        //     //         console.log(imgUrl);
+        //     //         productId = data.productId;
+        //     //         document.getElementById("prod_img").src = imgUrl;
+        //     //         document.getElementById("prod_name").innerText = data.productName;
+        //     //         document.getElementById("prod_intro").innerText = data.productIntroduction;
+        //     //         document.getElementById("prod_deposit").innerText = data.productDeposit;
+        //     //         document.getElementById("prod_rent").innerText = data.productRent;
+        //     //         document.getElementById("prod_price").innerText = data.productPrice;
+        //     //         document.getElementById("buyNumInp").value = num; //来源于上一个页面
+        //     //     }
+        //     // });
+        //     window.userId = "";
+        //     let _ticket = $.cookie("EM_TICKET");
+        //     let userPassword = $.cookie("PASSWORD");
+        //     let userName = $.cookie("USERNAME");
+        //     if (!_ticket) {
+        //         if (!userPassword || !userName) {
+        //             // 二者缺一无法自动登录
+        //             // window.location.href = "login.html";
+        //             return;
+        //         } else{
+        //             autoLogin(userName, userPassword);
+        //             return;
+        //         }
+        //     }
+        //     //当dataType类型为jsonp时，jQuery就会自动在请求链接上增加一个callback的参数
+        //     $.ajax({
+        //         url: "http://www.honest_a19.com/user/query/" + _ticket,
+        //         dataType: "json",
+        //         type: "GET",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 let _data = JSON.parse(data.data);//jackson
+        //                 if (_data == null) {
+        //                     window.location.href = "./login.html";
+        //                     return;
+        //                 }
+        //                 let html = _data.userName +
+        //                     "，欢迎来到honest_a19！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //                 query(userId);
+        //             } else if (data.status === 201) {
+        //                 // 在redis中没找到用户
+        //                 delCookie("EM_TICKET");
+        //                 delCookie("USERNAME");
+        //                 delCookie("PASSWORD");
+        //             } else if (data.status === 500) {
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert("请求失败");
+        //         }
+        //     });
+        // });
+        //
+        // /**
+        //  * 自动登录
+        //  * @param userName 用户名
+        //  * @param userPassword 密码
+        //  */
+        // function autoLogin(userName, userPassword) {
+        //     $.ajax({
+        //         url: "http://www.honest_a19.com/user/autologin",
+        //         type: "get",
+        //         data: {
+        //             "userName": userName,
+        //             "userPassword": userPassword
+        //         },
+        //         dataType: "json",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 let _data = data.data;//jackson
+        //                 let html = _data.userName +
+        //                     "，欢迎来到honest_a19！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //             } else if (data.status === 500) {
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert('请求失败');
+        //         }
+        //     });
+        // }
+        //
+        //
+        // // /**
+        // //  * 修改商品数量
+        // //  * @param productId 商品id
+        // //  * @param userId 用户id
+        // //  */
+        // // function inputNum(productId, userId) {
+        // //     let num = document.getElementById(productId).value;
+        // //     let numOld = document.getElementById("hid_" + productId).value;
+        // //     if (num === "" || num == null) {
+        // //         alert("数量填写错误");
+        // //         return;
+        // //     }
+        // //     if (num === 0) {
+        // //         del(productId, userId);
+        // //         return;
+        // //     }
+        // //     $.ajax({
+        // //         url: "http://www.honest_a19.com/products/item/" + productId,
+        // //         dataType: "json",
+        // //         type: "POST",
+        // //         success: function (data) {
+        // //             let total = data.productNum;
+        // //             if (num > total) {
+        // //                 alert("购买数量最大" + total);
+        // //                 document.getElementById(productId).value = numOld;
+        // //                 return;
+        // //             }
+        // //             $.ajax({
+        // //                 url: "http://www.honest_a19.com/cart/update?productId=" + productId + "&userId=" + userId + "&num=" + num,
+        // //                 dataType: "json",
+        // //                 type: "GET",
+        // //                 success: function (data) {
+        // //                     if (data.status === 200) {
+        // //                         window.location.href = "./mycart.html";
+        // //                     } else {
+        // //                         alert(data.msg);
+        // //                     }
+        // //                 },
+        // //                 error: function () {
+        // //                     alert("请求失败");
+        // //                 }
+        // //             });
+        // //         },
+        // //         error: function () {
+        // //             alert("请求失败");
+        // //         }
+        // //     });
+        // // }
+        //
+        // // /**
+        // //  * 查询购物车
+        // //  * @param userId 用户id
+        // //  */
+        // // function query(userId) {
+        // //     $.ajax({
+        // //         url: "http://www.honest_a19.com/cart/query?userId=" + userId,
+        // //         dataType: "json",
+        // //         type: "GET",
+        // //         success: function (data) {
+        // //             if (data.length > 0) {
+        // //                 let money = 0;
+        // //                 $.each(data, function (index, cart) {
+        // //                     let productId = cart.productId;
+        // //                     let productName = cart.productName;
+        // //                     let productPrice = cart.productPrice;
+        // //                     let productImage = cart.productImage;
+        // //                     let num = cart.num;
+        // //                     let prodHtml = "product-info.html?productId=" + productId;
+        // //                     let inputId = "hid_" + productId;
+        // //                     let itemMoney = productPrice * num;
+        // //                     money = money + itemMoney;
+        // //                     $("#items").append("<tr class='prods'>" +
+        // //                         "<td style='width:100px;'><input name='prodC' type='checkbox' checked='checked' class='select_items' style='padding: 0;margin: 2px;' onchange='checkChanged(this)' /><a href='"+prodHtml+"+' target='_blank' style='padding:0;margin: 0;'><img src='"+productImage+"' alt='' width='80' height='90' style='padding:0;margin: 0;'/></a></td>" +
+        // //                         "<td ><input type='hidden' name='productId' value='"+productId+"'/><a href='"+prodHtml+"' target='_blank' id='prods_name'>"+productName+"</a></td>" +
+        // //                         "<td id='prods_price' >"+productPrice+"</td>" +
+        // //                         "<td ><input type='hidden' id='" + inputId + "' value='" + num + "'/><input class='buyNumInp1' id='" + productId + "' type='number' value='" + num + "' onblur='inputNum(\"" + productId + "\",\"" + userId + "\")'/></td>" +
+        // //                         "<td >"+itemMoney+"</td>" +
+        // //                         "<td ><a href='javascript:void(0)' onclick='del(\""+productId + "\",\""+userId+"\")'>删除</a></td>" +
+        // //                         "</tr>");
+        // //                 })
+        // //                 document.getElementById("span_2").innerText = money + "￥";
+        // //             } else {
+        // //                 alert("购物车为空");
+        // //             }
+        // //         }
+        // //     });
+        // // }
+        //
+        // /**
+        //  * 提交订单
+        //  */
+        // function submitOrder(element){
+        //     let orderMoney = parseFloat(document.getElementById("span_2").innerText);
+        //     let orderReceiverinfo = $("#order_addr").val();
+        //     let orderPaystate = 0;
+        //     let j = 0;
+        //     let _date = {
+        //         "orderMoney": orderMoney,
+        //         "orderReceiverinfo": orderReceiverinfo,
+        //         "orderPaystate": orderPaystate,
+        //         "userId": userId
+        //     };
+        //     for (let i = 0; i < $(".prods").length; i++) {
+        //         let prod = $(".prods").eq(i);
+        //         let checked = prod.find("input[name=prodC]").prop("checked");
+        //         if (checked){
+        //             // 如果是勾选状态
+        //             let key = "orderItems[" +j+"]";
+        //             _date[key+".productId"] = prod.find("input[name=productId]").val();
+        //             _date[key+".num"] = parseInt(prod.find(".buyNumInp1").val());
+        //             _date[key+".productPrice"] = parseFloat(prod.find("#prods_price").text());
+        //             _date[key+".productImage"] = prod.find("img").attr("src");
+        //             _date[key+".productName"] = prod.find("#prods_name").text();
+        //             j = j + 1;
+        //         }
+        //     }
+        //     if (orderMoney === 0){
+        //         return;
+        //     }
+        //     $.ajax({
+        //         url: "/order/save",
+        //         dataType: "json",
+        //         type: "GET",
+        //         traditional: true,
+        //         data: _date,
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 window.location.href = "./myorder.html";
+        //             } else if (data.status === 201) {
+        //                 alert(data.msg);
+        //             } else if (data.status === 500) {
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert("请求失败");
+        //         }
+        //     });
+        // }
+        //
+        //
+        // /**
+        //  * 搜索
+        //  * @param a
+        //  */
+        // function search(a) {
+        //     let query = document.getElementById(a).value;
+        //     window.location.href = "./search.html?query=" + query;
+        // }
+    </script>
+</head>
+
+<body>
+    <div id="common_head">
+        <div class="line1">
+            <div class="content">
+                <ul>
+                    <li class="fore1" id="loginbar" v-html="personalMsg">
+                        <span id="head_span" ><a href="login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="regist.html">注册</a></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="line2">
+            <a href="http://www.citicbank.com/"><img id="logo" src="img/head/zxlogo.png" alt="logo"/></a>
+            <input type="text" v-model="query">
+            <input type="button" value="搜 索" @click="search">
+            <span id="goto">
+                <a id="goto_order" href="./myorder.html">我的订单</a>
+                <a id="goto_favourites" href="./myfavorites.html">我的收藏</a>
+            </span>
+            <span id="anologin">
+               <a id="goto_login" :href="gotoHref">{{loginTit}}</a>
+           </span>
+        </div>
+        <div class="line3">
+            <div class="content">
+                <ul>
+                    <li><a href="./index.html">首页</a></li>
+                    <li><a href="./product-list.html?type=电子数码">电子数码</a></li>
+                    <li><a href="./product-list.html?type=运动户外">运动户外</a></li>
+                    <li><a href="./product-list.html?type=母婴玩具">母婴玩具</a></li>
+                    <li><a href="./product-list.html?type=服装道具">服装道具</a></li>
+                    <li><a href="./product-list.html?type=影像出版">影像出版</a></li>
+                    <li><a href="./product-list.html?type=家居家用">家居家用</a></li>
+                    <li><a href="./product-list.html?type=共享生活">共享生活</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div id="container">
+        <div id="content">
+            <div class="checkout-tit">填写并核对订单信息</div>
+            <div class="checkout-steps">
+                <div class="step-tit">
+                    <h3>收货人信息</h3>
+                </div>
+                <div id="user_info">
+                    <p>收货人 &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="receiver_name" v-model="receiverName"></p>
+                    <p>手机号码 &nbsp;<input type="text" id="receiver_tel" v-model="receiverTel"></p>
+                    <p>邮箱地址 &nbsp;<input type="text" id="receiver_mail" v-model="receiverMail"><br></p>
+                    <label for="order_addr" class="lf">收货地址</label>&nbsp;
+                    <textarea name="orderReceiverinfo" id="order_addr" cols="45" rows="5" v-model="receiverAddr"></textarea><br />
+                </div>
+                <div class="hr"></div>
+
+                <div class="step-tit">
+                    <h3>支付方式</h3>
+                </div>
+                <div class="payment_list">
+                    <input name="" type="radio" value="" checked="checked" id="pay_online">&nbsp;在线支付
+                </div>
+                <div class="step-tit">
+                    <h3>租赁方式</h3>
+                </div>
+                <div class="payment_list">
+                    <input name="aaa" type="radio" value="" checked="checked">&nbsp;普通租赁
+                    <input name="aaa" type="radio" value="">&nbsp;以租代售
+                </div>
+                <div class="hr"></div>
+
+                <div class="step-tit">
+                    <h3>货物信息</h3>
+                </div>
+                <div id="shopping-list">
+                    <div id="left_info">
+                        <img :src="productPic" id="prod_img" alt="prod_img" style="width: 180px;height: 180px"><br>
+                        <span id="prod_name">{{productName}}<br/></span>
+                        <!--商品名称-->
+                        <span id="prod_intro">{{productIntro}}<br/></span>
+                        <!--商品简介-->
+                    </div>
+                    <div id="right_info">
+                        押     金：<span class="price_red" id="prod_deposit">{{productDeposit}}</span>元<br/>
+                        租     金：<span class="price_red" id="prod_rent">{{productRent}}</span>元/天<br/>
+                        原     价：<span class="price_red" id="prod_price">{{productPrice}}</span>元<br/>
+                        运     费：满 100 免运费<br/>
+                        <!--			            服     务：由老实人团队负责发货，并提供售后服务<br/>-->
+                        库存：<span id="prod_num">{{productStock}}</span>件<br/>
+                        <label for="buyNumInp">租赁数量：</label>
+                        <a href="javascript:void(0)" class="delNum" @click="sub">-</a>
+                        <input id="buyNumInp" name="buyNum" type="text" v-model="wantNum">
+                        <a href="javascript:void(0)" class="addNum" @click="add">+</a>
+                        <br>
+                        <label for="buyNumInp">租赁天数：</label>
+                        <a href="javascript:void(0)" class="delNum" @click="sub2">-</a>
+                        <input id="buyDayInp" name="buyNum" type="text" v-model="wantDay">
+                        <a href="javascript:void(0)" class="addNum" @click="add2">+</a>
+                    </div>
+                </div>
+            </div>
+            <div id="trade_foot">
+            <!--总价格-->
+                <span id="price-tit">应付金额:</span>
+                <span style="color: #e81d2a;font-size: 20px">￥</span><span id="total_price">{{totalPrice}}</span>
+            </div>
+            <input class="submit" type="button" @click="submitIt" value="🛒 提交订单"/><br>
+        </div>
+
+    </div>
+
+    <div class="fixed">
+        <a href="https://github.com/GuyueWK/com.A19" target="_blank">
+            <img src="./img/head/mywxqr.png" width="100" alt="qrcode"/>
+        </a>
+        <a href="#common_head" class="toTop"></a>
+    </div>
+    <div id="common_foot">
+        <p>
+            老实人团队版权所有 Copyright © 2020-2021
+            <br />
+            null公网安备  null号
+        </p>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/cookie.js"></script>
+    <script src="js/header.js"></script>
+    <script src="js/getparam.js"></script>
+    <script src="js/neworder.js"></script>
+    </body>
+</html>

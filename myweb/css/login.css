@@ -1,0 +1,54 @@
+﻿body{
+	background-image: url("../img/login/dl.jpg");
+	background-repeat: no-repeat;
+	background-position: top;
+	font-family: "微软雅黑", serif;
+}
+h1{
+	width:300px;
+	margin:210px auto 0;
+	text-align: center;
+	color: #d70010;
+	font-size:27px;
+}
+form{
+	width:400px;
+	margin:3px auto 0;
+}
+img{
+	vertical-align: top;
+}
+input{
+	height: 25px;
+
+}
+form input[type='text'],form input[type='password']{
+	border: 1px solid #CCCCCC;
+	vertical-align: middle;
+}
+
+table{
+	margin:0 auto 0;
+}
+td{
+	padding-top:15px;
+}
+.tdx{
+	font-size: 18px;
+	text-align: right;
+}
+
+input[type='submit']{
+	width:92px;
+	height:44px;
+	border-style:none;
+	font-size:20px;
+	font-weight:bold;
+	color:white;
+	cursor: pointer;
+	border-radius: 5px;
+	background-color: #c41228;
+}
+input[type='submit']:hover{
+	background-color: #D01E34;
+}

@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="img/head/zxfavicon.png" />
+    <link rel="stylesheet" href="css/foot.css"/>
+    <link rel="stylesheet" href="css/head.css"/>
+    <link href="css/prodInfo.css" rel="stylesheet" type="text/css">
+    <noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+<!--    <link href="css/prodList.css" rel="stylesheet" type="text/css">-->
+    <title>商品详细页</title>
+    <script type="text/javascript">
+        // var userId = "";
+        // var productId = "";
+        // window.onload = function () {
+        //     tab_one();
+        //     let localUrl = decodeURI(window.location.href);
+        //     //alert(localUrl);
+        //     productId = localUrl.split("?")[1].split("=")[1];
+        //     $.ajax({
+        //         url: "http://www.honest_a19.com/products/item/" + productId,
+        //         dataType: "json",
+        //         type: "POST",
+        //         success: function (data) {
+        //             //图片
+        //             let imgUrl = data.productImgurl;
+        //             console.log(imgUrl);
+        //             productId = data.productId;
+        //             document.getElementById("prod_img").src = imgUrl;
+        //             document.getElementById("prod_name").innerText = data.productName;
+        //             document.getElementById("prod_intro").innerText = data.productIntroduction;
+        //             document.getElementById("prod_deposit").innerText = data.productDeposit;
+        //             document.getElementById("prod_rent").innerText = data.productRent;
+        //             document.getElementById("prod_price").innerText = data.productPrice;
+        //             document.getElementById("prod_num").innerText = data.productNum;
+        //             document.getElementById("prod_desc").innerText = data.productDescription;
+        //         }
+        //     });
+        //     let _ticket = $.cookie("EM_TICKET");
+        //     let userPassword = $.cookie("PASSWORD");
+        //     let userName = $.cookie("USERNAME");
+        //     //alert(_ticket);
+        //     if (!_ticket) {
+        //         if (!userPassword || !userName)
+        //             // 二者缺一无法自动登录
+        //             return;
+        //         else{
+        //             autoLogin(userName, userPassword);
+        //             return;
+        //         }
+        //     }
+        //
+        //     //当dataType类型为jsonp时，jQuery就会自动在请求链接上增加一个callback的参数
+        //     $.ajax({
+        //         url: "http://www.honest_a19.com/user/query/" + _ticket,
+        //         dataType: "json",
+        //         type: "GET",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 let _data = JSON.parse(data.data);//jackson
+        //                 let html = _data.userName +
+        //                     "，欢迎来到共享租赁平台！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //             }else if (data.status === 201){
+        //                 // 在redis中没找到用户
+        //                 delCookie("EM_TICKET");
+        //                 delCookie("USERNAME");
+        //                 delCookie("PASSWORD");
+        //             }else if (data.status === 500){
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert("请求失败");
+        //         }
+        //     });
+        //
+        // }
+        //
+        // // function addCart() {
+        // //     if (userId === "") {
+        // //         window.location.href = "login.html";
+        // //         return;
+        // //     }
+        // //     let num = document.getElementById("buyNumInp").value;
+        // //     let total = parseInt(document.getElementById("prod_num").innerText);
+        // //     if (num > total) {
+        // //         alert("最多购买"+total+"个");
+        // //         return;
+        // //     }
+        // //     $.ajax({
+        // //         url: "http://www.honest_a19.com/cart/save?userId=" + userId + "&productId=" + productId + "&num=" + num,
+        // //         dataType: "json",
+        // //         type: "GET",
+        // //         success: function (data) {
+        // //             if (data.status === 200) {
+        // //                 window.location.href = "http://www.honest_a19.com/mycart.html?userId=" + userId;
+        // //             } else {
+        // //                 alert(data.msg);
+        // //             }
+        // //         },
+        // //         error: function () {
+        // //             alert("请求失败");
+        // //         }
+        // //     });
+        // // }
+        //
+        // function buyIt() {
+        //     if (userId === "") {
+        //         window.location.href = "login.html";
+        //         return;
+        //     }
+        //     let num = document.getElementById("buyNumInp").value;
+        //     let total = parseInt(document.getElementById("prod_num").innerText);
+        //     if (num > total) {
+        //         alert("最多购买"+total+"个");
+        //         return;
+        //     }
+        //     window.location.href = "http://www.honest_a19.com/neworder?userId=" + userId + "&productId=" + productId + "&num=" + num;
+        // }
+        // /**
+        //  * 自动登录
+        //  * @param userName 用户名
+        //  * @param userPassword 密码
+        //  */
+        // function autoLogin(userName, userPassword) {
+        //     $.ajax({
+        //         url:"http://www.honest_a19.com/user/autologin",
+        //         type:"get",
+        //         data:{
+        //             "userName": userName,
+        //             "userPassword": userPassword
+        //         },
+        //         dataType:"json",
+        //         success: function (data) {
+        //             if (data.status === 200) {
+        //                 let _data = data.data;//jackson
+        //                 let html = _data.userName +
+        //                     "，欢迎来到honest_a19！<a href='javascript:void(0)' class='link-logout' onclick='logout()'>[退出]</a>";
+        //                 if (_data.userType >= 3)
+        //                     html = html + "&nbsp;&nbsp;|&nbsp;&nbsp;<a href='http://www.honest_a19.com/manage.html' class='link-logout'>[后台]</a>";
+        //                 userId = _data.userId;
+        //                 $("#loginbar").html(html);
+        //             }else if (data.status === 500){
+        //                 alert(data.msg);
+        //             }
+        //         },
+        //         error: function () {
+        //             alert('请求失败');
+        //         }
+        //     });
+        // }
+        //
+        //
+        // function search(a) {
+        //     let query = document.getElementById(a).value;
+        //     //alert(query);
+        //     window.location.href = "./search.html?query=" + query;
+        // }
+        // function tab_one() {
+        //     console.log("tabclick_ok");
+        //     $("#prod_desc").css("display","block");
+        //     $("#process_info").css("display","none");
+        //     $("#compensation_std").css("display","none");
+        //     $("#tab_one").css("background-color","#e81d2a");
+        //     $("#tab_one").css("color","#ffffff");
+        //     $("#tab_two").css("background-color","#f7f7f7");
+        //     $("#tab_two").css("color","rgb(102, 102, 102)");
+        //     $("#tab_three").css("background-color","#f7f7f7");
+        //     $("#tab_three").css("color","rgb(102, 102, 102)");
+        // }
+        // function tab_two() {
+        //     console.log("tabclick_ok");
+        //     $("#prod_desc").css("display","none");
+        //     $("#process_info").css("display","block");
+        //     $("#compensation_std").css("display","none");
+        //
+        //     $("#tab_one").css("background-color","#f7f7f7");
+        //     $("#tab_one").css("color","rgb(102, 102, 102)");
+        //     $("#tab_two").css("background-color","#e81d2a");
+        //     $("#tab_two").css("color","#ffffff");
+        //     $("#tab_three").css("background-color","#f7f7f7");
+        //     $("#tab_three").css("color","rgb(102, 102, 102)");
+        // }
+        // function tab_three() {
+        //     console.log("tabclick_ok");
+        //     $("#prod_desc").css("display","none");
+        //     $("#process_info").css("display","none");
+        //     $("#compensation_std").css("display","block");
+        //     $("#tab_one").css("background-color","#f7f7f7");
+        //     $("#tab_one").css("color","rgb(102, 102, 102)");
+        //     $("#tab_three").css("background-color","#e81d2a");
+        //     $("#tab_three").css("color","#ffffff");
+        //     $("#tab_two").css("background-color","#f7f7f7");
+        //     $("#tab_two").css("color","rgb(102, 102, 102)");
+        // }
+
+    </script>
+</head>
+
+<body>
+<div id="common_head">
+    <div class="line1">
+        <div class="content">
+            <ul>
+                <li class="fore1" id="loginbar" v-html="personalMsg">
+                    <span id="head_span" ><a href="login.html">登录</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="regist.html">注册</a></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="line2">
+        <a href="http://www.citicbank.com/"><img id="logo" src="img/head/zxlogo.png" alt="logo"/></a>
+        <input type="text" v-model="query">
+        <input type="button" value="搜 索" @click="search">
+        <span id="goto">
+			<a id="goto_order" href="./myorder.html">我的订单</a>
+			<a id="goto_favourites" href="./myfavorites.html">我的收藏</a>
+		</span>
+        <span id="anologin">
+           <a id="goto_login" :href="gotoHref">{{loginTit}}</a>
+       </span>
+    </div>
+    <div class="line3">
+        <div class="content">
+            <ul>
+                <li><a href="./index.html">首页</a></li>
+                <li><a href="./product-list.html?type=电子数码">电子数码</a></li>
+                <li><a href="./product-list.html?type=运动户外">运动户外</a></li>
+                <li><a href="./product-list.html?type=母婴玩具">母婴玩具</a></li>
+                <li><a href="./product-list.html?type=服装道具">服装道具</a></li>
+                <li><a href="./product-list.html?type=影像出版">影像出版</a></li>
+                <li><a href="./product-list.html?type=家居家用">家居家用</a></li>
+                <li><a href="./product-list.html?type=共享生活">共享生活</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="info-container">
+    <div id="warp">
+        <div id="left">
+            <div id="left_top">
+                <img :src="productPic" id="prod_img" alt="prod_img"/>
+                <!--商品图片-->
+            </div>
+            <div id="left_bottom"></div>
+            <!--商品-->
+        </div>
+        <div id="right">
+            <div id="right_top">
+                <span id="prod_name">{{productName}}<br/></span>
+                <!--商品名称-->
+                <br>
+                <span id="prod_intro">{{productIntro}}<br/></span>
+                <!--商品简介-->
+            </div>
+            <div id="right_middle">
+                    <span id="right_middle_span">
+                            押     金：<span class="price_red" id="prod_deposit">{{productDeposit}}</span>元<br/>
+                            租     金：<span class="price_red" id="prod_rent">{{productRent}}</span>元/天<br/>
+                            原     价：<span class="price_red" id="prod_price">{{productPrice}}</span>元<br/>
+                            运     费：满 100 免运费<br/>
+    <!--			            服     务：由老实人团队负责发货，并提供售后服务<br/>-->
+                        库存：<span id="prod_num">{{productStock}}</span>件<br/>
+                        <label for="buyNumInp">租赁数量：</label>
+                        <a href="javascript:void(0)" id="delNum" @click="sub">-</a>
+                        <input id="buyNumInp" name="buyNum" type="text" v-model="wantNum">
+                        <a href="javascript:void(0)" id="addNum" @click="add">+</a>
+                    </span>
+            </div>
+            <div id="right_bottom">
+                <input class="add_cart_but" type="button" @click="buyIt()" value="🛒 立即租赁"/><br>
+                <span id="tips">温馨提示：可先租后买、以租代售、共享租赁。</span>
+            </div>
+        </div>
+    </div>
+    <div id="detailInfo">
+        <div id="tab_main">
+            <ul>
+                <li id="tab_one" @click="doDescription">商品详细</li>
+                <li id="tab_two" @click="doInfo">租赁流程</li>
+                <li id="tab_three" @click="doStd">赔偿标准</li>
+            </ul>
+            <div id="prod_desc" v-show="isShow_1">
+                <br><br>
+                <p>{{productDescription}}</p>
+            </div>
+            <div id="process_info" v-show="isShow_2">
+                <br>
+                <br>
+                <p> 一般租赁流程：</p>
+                <img src="img/test/流程测试.png">
+                <p> 例如：租客2号下单，2-4号为物流快递时间，5-10号使用，11号为归还时间，12-15号为物流时间及确认物品完好。用户只支付5-10号共六天租金。</p>
+                <p> 更多信息暂略</p>
+            </div>
+            <div id="compensation_std" v-show="isShow_3">
+                <br><br>
+                <p>电子类数码类赔偿标准</p>
+                <img src="img/test/test.png">
+            </div>
+        </div>
+    </div>
+</div>
+<div id="common_foot">
+    <p>
+        老实人团队版权所有 Copyright © 2020-2021
+        <br />
+        null公网安备  null号
+    </p>
+</div>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/cookie.js"></script>
+<script src="js/getparam.js"></script>
+<script src="js/header.js"></script>
+<script src="js/product-info.js"></script>
+</body>
+</html>

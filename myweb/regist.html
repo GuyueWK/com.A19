@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <title>欢迎注册共享租赁商城</title>
+    <link rel="stylesheet" href="css/regist.css"/>
+    <link rel="icon" type="image/x-icon" href="img/head/zxfavicon.png" />
+    <noscript>抱歉，你的浏览器不支持 JavaScript!</noscript>
+    <meta charset="UTF-8">
+</head>
+<body>
+<img src="./img/head/zxlogo.png" alt="logo" style="position: absolute;top: 8%;left: 12%;">
+    <h1>欢迎注册网上商城</h1>
+    <table id="register-warp">
+        <tr>
+            <td colspan="2" id="alert" class="tds" style="text-align: center;color: red;"></td>
+        </tr>
+        <tr>
+            <td class="tds"><label for="userId">用户名：</label></td>
+            <td>
+                <input type="text" name="username" id="userId" v-model="userId">
+                <span style="color: red" id="username_msg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="tds"><label for="password">密码：</label></td>
+            <td>
+                <input type="password" name="password" id="password" v-model="password">
+                <span style="color: red" id="password_msg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="tds"><label for="password2">确认密码：</label></td>
+            <td>
+                <input type="password" name="password2" id="password2" v-model="password_2">
+                <span style="color: red" id="password2_msg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="tds"><label for="nickname">昵称：</label></td>
+            <td>
+                <input type="text" name="nickname" id="nickname" v-model="nickname">
+                <span style="color: red" id="nickname_msg"></span>
+            </td>
+        </tr>
+        <tr>
+            <td class="tds"><label for="email">邮箱：</label></td>
+            <td>
+                <input type="text" name="email" id="email" v-model="mail">
+                <span style="color: red" id="email_msg"></span>
+            </td>
+        </tr>
+<!--        <tr>-->
+<!--            <td class="tds"><label for="valistr">验证码：</label></td>-->
+<!--            <td>-->
+<!--                <input type="text" name="valistr" id="valistr" onblur="checkNull('valistr', '验证码不能为空')"/>-->
+<!--                <img width="" height="" alt="验证码" onclick="refreshValistr(this)"/>-->
+<!--                <span style="color: red" id="valistr_msg"></span>-->
+<!--            </td>-->
+<!--        </tr>-->
+        <tr>
+            <td class="sub_td" colspan="2" >
+                <input type="submit" value="注册用户" @click="register">
+            </td>
+        </tr>
+    </table>
+<script src="js/vue.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

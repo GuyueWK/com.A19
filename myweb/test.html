@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/getparam.js"></script>
+    <title>test</title>
+</head>
+<body>
+    <div id="app">
+        <h1 @click="doIt">hhh</h1>
+        <h2>{{name}}</h2>
+        <h2>{{age}}</h2>
+    </div>
+    <script src="js/vue.min.js"></script>
+    <script>
+        var app = new Vue({
+            el:"#app",
+            data:{
+                name:"asda",
+                age:20
+            },
+            methods:{
+                doIt:function () {
+                    var params = GetRequest();
+                    this.name = params.name;
+                    this.age = params.age;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
